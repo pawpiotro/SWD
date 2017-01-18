@@ -8,29 +8,24 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import java.io.File;
 import java.io.FileInputStream;
 
-
-/**
- * Sample Java program to read and write Excel file in Java using Apache POI
- *
- */
 public class ImportData {
 
-    public void writeOut(String path, String filename){
+
+    public void writeOut(String path){
         try {
-            File file = new File(path+filename);
+            File file = new File(path);
             POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(file));
             HSSFWorkbook wb = new HSSFWorkbook(fs);
             HSSFSheet sheet = wb.getSheetAt(0);
             HSSFRow row;
             HSSFCell cell;
 
-            int rows; // No of rows
+            int rows;
             rows = sheet.getPhysicalNumberOfRows();
 
-            int cols = 0; // No of columns
+            int cols = 0;
             int tmp = 0;
 
-            // This trick ensures that we get the data properly even if it doesn't start from first few rows
             for(int i = 0; i < 10 || i < rows; i++) {
                 row = sheet.getRow(i);
                 if(row != null) {
@@ -65,6 +60,17 @@ public class ImportData {
             }
         } catch(Exception ioe) {
             ioe.printStackTrace();
+        }
+    }
+
+    public void listFilesForFolder(final File folder) {
+        for (final File fileEntry : folder.listFiles()) {
+            if (fileEntry.isDirectory()) {
+                listFilesForFolder(fileEntry);
+            } else {
+                System.out.println(fileEntry.getName());
+                writeOut(fileEntry.getAbsolutePath());
+            }
         }
     }
 }
