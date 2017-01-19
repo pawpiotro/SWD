@@ -20,7 +20,8 @@ public class GUIInit {
         public void actionPerformed(ActionEvent e) {
             float risk = okno.getRyzyko() / 100.0f;
             int fund = okno.getFund();
-            int a = decision.makeDecision(risk, fund, 0.01f);
+            boolean omitZero= okno.omitZero();
+            int a = decision.makeDecision(risk, fund, 0.01f, omitZero);
             switch(a){
                 case 0:
                     System.out.println("Znaleziono.\n");

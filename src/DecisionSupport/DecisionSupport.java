@@ -13,7 +13,7 @@ public class DecisionSupport {
         data = data1;
     }
 
-    public int makeDecision(float ryzyko, float gotowka, float e){
+    public int makeDecision(float ryzyko, float gotowka, float e, boolean omitZero){
         if(ryzyko > 1.0f || ryzyko < 0.0f || e > 1.0f )
             return 1;
         boolean found = false;
@@ -22,7 +22,8 @@ public class DecisionSupport {
             float tmpR = c.getRyzyko();
             float tmpG = c.getGotowka();
             if((tmpR > (ryzyko-e)) && (tmpR < (ryzyko+e)) && (tmpG <= gotowka)){
-                tmp.getCases().add(c);
+                if(!(omitZero && tmpR == 0.0f))
+                    tmp.getCases().add(c);
             }
         }
         Case best = new Case();
@@ -41,7 +42,7 @@ public class DecisionSupport {
             return 0;
         }
         else{
-            makeDecision(ryzyko, gotowka, e+0.01f);
+            makeDecision(ryzyko, gotowka, e+0.01f, omitZero);
             return 2;
         }
     }

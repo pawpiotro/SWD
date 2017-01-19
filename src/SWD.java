@@ -17,6 +17,7 @@ public class SWD {
     private JLabel LabelSrodki;
     private JSpinner FundInput;
     private JTextArea Komunikat;
+    private JCheckBox zeroCheck;
 
     public SWD() {
 
@@ -46,7 +47,9 @@ public class SWD {
     public int getFund(){
         return (Integer) FundInput.getValue();
     }
-
+    public boolean omitZero(){
+        return zeroCheck.isSelected();
+    }
     private void setCustomOutput(JTextArea area) {
         PrintStream print_stream = new PrintStream(new CustomOutputStream(area));
         //podmiana standardowego strumienia
