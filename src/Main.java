@@ -24,7 +24,7 @@ public class Main {
         }
         String path = chooser.getSelectedFile().getAbsolutePath();
 
-        SWD okno = new SWD();
+
 
         CaseHolder data = new CaseHolder();
         ImportData imp = new ImportData(data);
@@ -34,18 +34,6 @@ public class Main {
         data.printAll();
         System.out.println("-------------------------------");
         DecisionSupport decision = new DecisionSupport(data);
-        int a = decision.makeDecision(0.5f, 500000, 0.01f);
-        switch(a){
-            case 0:
-                System.out.println("Znaleziono.");
-                break;
-            case 1:
-                System.out.println("Niepoprawne dane. (ryzyko)");
-                break;
-            case 2:
-                System.out.println("Znaleziono, po zwiekszeniu ryzyka");
-                break;
-            default:
-        }
+        GUIInit guiInit = new GUIInit(decision);
     }
 }

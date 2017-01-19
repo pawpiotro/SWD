@@ -31,12 +31,10 @@ public class SWD {
                 RyzykoLabel.setText(Integer.toString(RyzykoInput.getValue()) + '%');
             }
         });
-        WDButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+    }
 
-            }
-        });
+    public void addWDButtonListener(ActionListener listenerForWDButton){
+        WDButton.addActionListener(listenerForWDButton);
     }
 
 }
