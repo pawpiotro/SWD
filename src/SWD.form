@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="SWD">
-  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="5" left="5" bottom="5" right="5"/>
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="dfdde" class="javax.swing.JLabel">
+      <component id="dfdde" class="javax.swing.JLabel" binding="LabelRyzyko">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -28,7 +28,7 @@
           <text value="Label"/>
         </properties>
       </component>
-      <component id="412de" class="javax.swing.JSlider" binding="slider1" default-binding="true">
+      <component id="412de" class="javax.swing.JSlider" binding="RyzykoInput">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -38,25 +38,18 @@
           <paintLabels value="true"/>
           <paintTicks value="true"/>
           <snapToTicks value="true"/>
+          <value value="0"/>
         </properties>
       </component>
-      <component id="6a3c5" class="javax.swing.JLabel">
+      <component id="6a3c5" class="javax.swing.JLabel" binding="LabelSrodki">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Label"/>
+          <text value="Wprowadź dostępne środki:"/>
         </properties>
       </component>
-      <component id="2586f" class="javax.swing.JTextField" binding="textField1" default-binding="true">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="ad845" class="javax.swing.JButton" binding="wspomóżDecyzjęButton" default-binding="true">
+      <component id="ad845" class="javax.swing.JButton" binding="WDButton">
         <constraints>
           <grid row="2" column="1" row-span="2" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -71,6 +64,12 @@
         <properties>
           <text value="0%"/>
         </properties>
+      </component>
+      <component id="6f0da" class="javax.swing.JSpinner" binding="FundInput">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
       </component>
     </children>
   </grid>

@@ -1,31 +1,42 @@
 import javax.swing.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Dominik on 2017-01-19.
  */
 public class SWD {
-    private JSlider slider1;
-    private JTextField textField1;
-    private JButton wspomóżDecyzjęButton;
+    private JSlider RyzykoInput;
+    private JButton WDButton;
     private JLabel Komunikat;
     private JLabel RyzykoLabel;
+    private JPanel panel;
+    private JLabel LabelRyzyko;
+    private JLabel LabelSrodki;
+    private JSpinner FundInput;
 
     public SWD() {
-        slider1.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                RyzykoLabel.setText(Integer.toString(slider1.getValue()) + '%');
-            }
-        });
 
         JFrame frame = new JFrame("SWD");
-        frame.setContentPane(this.contentPane);
+        frame.setContentPane(this.panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-    }
 
+        RyzykoInput.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                RyzykoLabel.setText(Integer.toString(RyzykoInput.getValue()) + '%');
+            }
+        });
+        WDButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+    }
 
 }
