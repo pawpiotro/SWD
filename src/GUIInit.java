@@ -20,7 +20,9 @@ public class GUIInit {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            int a = decision.makeDecision(0.5f, 500000, 0.01f);
+            float risk = okno.getRyzyko() / 100.0f;
+            int fund = okno.getFund();
+            int a = decision.makeDecision(risk, fund, 0.01f);
             switch(a){
                 case 0:
                     System.out.println("Znaleziono.");
