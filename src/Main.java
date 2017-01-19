@@ -29,6 +29,7 @@ public class Main {
 
             final File folder = new File(path);
             imp.importFilesFromFolder(folder);
+            System.out.println("Data from " + path + " imported.");
             //data.printAll();
             //System.out.println("-------------------------------");
             DecisionSupport decision = new DecisionSupport(data);
