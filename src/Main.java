@@ -10,7 +10,7 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
-        /*JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new java.io.File("."));
         chooser.setDialogTitle("choosertitle");
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -23,14 +23,10 @@ public class Main {
             System.out.println("No Selection ");
         }
         String path = chooser.getSelectedFile().getAbsolutePath();
-*/
-
-        String path = "D:\\Users\\Pawel\\Downloads\\WDEC_symulacja\\DANE\\";
 
         SWD okno = new SWD();
-        okno.init();
 
-        /*CaseHolder data = new CaseHolder();
+        CaseHolder data = new CaseHolder();
         ImportData imp = new ImportData(data);
 
         final File folder = new File(path);
@@ -50,6 +46,6 @@ public class Main {
                 System.out.println("Znaleziono, po zwiekszeniu ryzyka");
                 break;
             default:
-        }*/
+        }
     }
 }
