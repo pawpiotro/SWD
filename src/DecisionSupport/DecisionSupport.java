@@ -13,12 +13,13 @@ public class DecisionSupport {
         data = data1;
     }
 
-    public void makeDecision(float ryzyko, float gotowka){
+    public boolean makeDecision(float ryzyko, float gotowka, float e){
+        boolean found = false;
         CaseHolder tmp = new CaseHolder();
         for(Case c: data.getCases()){
             float tmpR = c.getRyzyko();
             float tmpG = c.getGotowka();
-            if((tmpR > (ryzyko-0.05f)) && (tmpR < (ryzyko+0.05f)) && (tmpG <= gotowka)){
+            if((tmpR > (ryzyko-e)) && (tmpR < (ryzyko+e)) && (tmpG <= gotowka)){
                 tmp.getCases().add(c);
             }
         }
@@ -29,9 +30,17 @@ public class DecisionSupport {
                 zyskMax = c.getZysk();
                 best = c;
                 System.out.println("znaleziony lepszy");
+                found = true;
             }
 
         }
-        best.print();
+        if(found) {
+            best.print();
+            return true;
+        }
+        else{
+            makeDecision(ryzyko, gotowka, e+0.01f);
+            return false;
+        }
     }
 }
