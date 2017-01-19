@@ -5,12 +5,13 @@ import java.beans.PropertyChangeListener;
 /**
  * Created by Dominik on 2017-01-19.
  */
-public class SWD {
+public class SWD extends JFrame{
     private JSlider slider1;
     private JTextField textField1;
     private JButton wspomóżDecyzjęButton;
     private JLabel Komunikat;
     private JLabel RyzykoLabel;
+    private JPanel rootPanel;
 
     public SWD() {
         slider1.addPropertyChangeListener(new PropertyChangeListener() {
@@ -19,13 +20,15 @@ public class SWD {
                 RyzykoLabel.setText(Integer.toString(slider1.getValue()) + '%');
             }
         });
-
+    }
+    public void init() {
         JFrame frame = new JFrame("SWD");
-        frame.setContentPane(this.contentPane);
+        frame.setContentPane(rootPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
+
 
 
 }
