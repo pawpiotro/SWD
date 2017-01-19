@@ -1,4 +1,3 @@
-
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -8,10 +7,17 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import java.io.File;
 import java.io.FileInputStream;
 
+import Data.*;
+
+
 public class ImportData {
 
+    CaseHolder data;
+    public ImportData(CaseHolder data1){
+        data = data1;
+    }
 
-    public void writeOut(String path){
+    public void importDataFromFile(String path){
         try {
             File file = new File(path);
             POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(file));
@@ -33,7 +39,8 @@ public class ImportData {
                     if(tmp > cols) cols = tmp;
                 }
             }
-
+            Case tmp1 = new Case();
+            int sprzedaz = 0;
             for(int r = 0; r < rows; r++) {
                 row = sheet.getRow(r);
                 if(row != null) {
@@ -45,6 +52,33 @@ public class ImportData {
                                     System.out.print(cell.getStringCellValue() + "\t");
                                     break;
                                 case NUMERIC:
+                                    if(c == 1){
+                                        switch(r){
+                                            case 4: tmp1.setGotowka((float)cell.getNumericCellValue());
+                                                break;
+                                            case 5: tmp1.setWolumen((int)cell.getNumericCellValue());
+                                                break;
+                                            case 6: tmp1.setJakosc((int)cell.getNumericCellValue());
+                                                break;
+                                            case 7: tmp1.setCena((float)cell.getNumericCellValue());
+                                                break;
+                                            case 8: tmp1.setReklamaInt((float)cell.getNumericCellValue());
+                                                break;
+                                            case 9: tmp1.setReklamaTV((float)cell.getNumericCellValue());
+                                                break;
+                                            case 10: tmp1.setReklamaMag((float)cell.getNumericCellValue());
+                                            default:
+                                        }
+                                    }
+                                    if(c == 2){
+                                        switch(r){
+                                            case 3: tmp1.setZysk((float)cell.getNumericCellValue());
+                                                break;
+                                            case 1: sprzedaz = (int)cell.getNumericCellValue();
+                                                break;
+                                            default:
+                                        }
+                                    }
                                     System.out.print(cell.getNumericCellValue() + "\t");
                                     break;
                                 case BOOLEAN:
@@ -58,18 +92,20 @@ public class ImportData {
                     }
                 }
             }
+            tmp1.setRyzyko((float)(tmp1.getWolumen()-sprzedaz)/tmp1.getWolumen());
+            data.getCases().add(tmp1);
         } catch(Exception ioe) {
             ioe.printStackTrace();
         }
     }
 
-    public void listFilesForFolder(final File folder) {
+    public void importFilesFromFolder(final File folder) {
         for (final File fileEntry : folder.listFiles()) {
             if (fileEntry.isDirectory()) {
-                listFilesForFolder(fileEntry);
+                importFilesFromFolder(fileEntry);
             } else {
                 System.out.println(fileEntry.getName());
-                writeOut(fileEntry.getAbsolutePath());
+                importDataFromFile(fileEntry.getAbsolutePath());
             }
         }
     }
