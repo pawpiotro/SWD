@@ -22,20 +22,29 @@ public class Main {
         } else {
             System.out.println("No Selection ");
         }
+        String path = chooser.getSelectedFile().getAbsolutePath();
+
 
         CaseHolder data = new CaseHolder();
         ImportData imp = new ImportData(data);
-        String path = chooser.getSelectedFile().getAbsolutePath();
-
 
         final File folder = new File(path);
         imp.importFilesFromFolder(folder);
         data.printAll();
         System.out.println("-------------------------------");
         DecisionSupport decision = new DecisionSupport(data);
-        if(decision.makeDecision(0.1f, 500000, 0.01f))
-            System.out.println("Znaleziono.");
-        else
-            System.out.println("Nie znaleziono. Trzeba bylo zwiekszyc ryzyko.");
+        int a = decision.makeDecision(0.5f, 500000, 0.01f);
+        switch(a){
+            case 0:
+                System.out.println("Znaleziono.");
+                break;
+            case 1:
+                System.out.println("Niepoprawne dane. (ryzyko)");
+                break;
+            case 2:
+                System.out.println("Znaleziono, po zwiekszeniu ryzyka");
+                break;
+            default:
+        }
     }
 }

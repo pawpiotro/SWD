@@ -13,7 +13,9 @@ public class DecisionSupport {
         data = data1;
     }
 
-    public boolean makeDecision(float ryzyko, float gotowka, float e){
+    public int makeDecision(float ryzyko, float gotowka, float e){
+        if(ryzyko > 1.0f || ryzyko < 0.0f || e > 1.0f )
+            return 1;
         boolean found = false;
         CaseHolder tmp = new CaseHolder();
         for(Case c: data.getCases()){
@@ -36,11 +38,11 @@ public class DecisionSupport {
         }
         if(found) {
             best.print();
-            return true;
+            return 0;
         }
         else{
             makeDecision(ryzyko, gotowka, e+0.01f);
-            return false;
+            return 2;
         }
     }
 }
