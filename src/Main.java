@@ -24,6 +24,7 @@ public class Main {
         }
         String path = chooser.getSelectedFile().getAbsolutePath();
 
+        SWD okno = new SWD();
 
         CaseHolder data = new CaseHolder();
         ImportData imp = new ImportData(data);
