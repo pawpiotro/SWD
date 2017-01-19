@@ -29,7 +29,7 @@ public class GUIInit {
                     System.out.println("Niepoprawne dane. (ryzyko)\n");
                     break;
                 case 2:
-                    System.out.println("Znaleziono, po zwiekszeniu ryzyka\n");
+                    System.out.println("Znaleziono, po zwiekszeniu zakresu ryzyka\n");
                     break;
                 default:
             }
