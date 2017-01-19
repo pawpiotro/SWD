@@ -1,5 +1,6 @@
 import java.io.File;
 import Data.*;
+import DecisionSupport.*;
 
 import javax.swing.*;
 
@@ -7,8 +8,6 @@ import javax.swing.*;
  * Created by blank on 1/18/2017.
  */
 public class Main {
-
-
 
     public static void main(String[] args) {
         JFileChooser chooser = new JFileChooser();
@@ -30,5 +29,8 @@ public class Main {
         final File folder = new File(path);
         imp.importFilesFromFolder(folder);
         data.printAll();
+        System.out.println("-------------------------------");
+        DecisionSupport decision = new DecisionSupport(data);
+        decision.makeDecision(0.1f, 500000);
     }
 }

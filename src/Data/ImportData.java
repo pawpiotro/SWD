@@ -1,3 +1,5 @@
+package Data;
+
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -6,9 +8,6 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
 import java.io.File;
 import java.io.FileInputStream;
-
-import Data.*;
-
 
 public class ImportData {
 
@@ -49,7 +48,7 @@ public class ImportData {
                         if(cell != null) {
                             switch (cell.getCellTypeEnum()) {
                                 case STRING:
-                                    System.out.print(cell.getStringCellValue() + "\t");
+                                    //System.out.print(cell.getStringCellValue() + "\t");
                                     break;
                                 case NUMERIC:
                                     if(c == 1){
@@ -79,10 +78,10 @@ public class ImportData {
                                             default:
                                         }
                                     }
-                                    System.out.print(cell.getNumericCellValue() + "\t");
+                                    //System.out.print(cell.getNumericCellValue() + "\t");
                                     break;
                                 case BOOLEAN:
-                                    System.out.print(cell.getBooleanCellValue() + "\t");
+                                    //System.out.print(cell.getBooleanCellValue() + "\t");
                                     break;
                                 default:
                             }

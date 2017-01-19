@@ -106,7 +106,7 @@ public class Case {
     }
 
     public void print(){
-        System.out.println("ryzyko =      " + ryzyko + "\n" +
+        System.out.println( "ryzyko =     " + ryzyko + "\n" +
                             "zysk =       " + zysk + "\n" +
                             "wolumen =    " + wolumen + "\n" +
                             "cena =       " + cena + "\n" +

@@ -1,4 +1,4 @@
-package Data;
+package DecisionSupport;
 
 import javax.swing.*;
 import java.awt.*;
