@@ -10,10 +10,8 @@ public class GUIInit {
     private DecisionSupport decision;
     private SWD okno;
 
-    public GUIInit(DecisionSupport decision1){
+    public GUIInit(){
         okno = new SWD();
-        decision = decision1;
-        okno.addWDButtonListener(new swdListener());
     }
 
     class swdListener implements ActionListener {
@@ -25,16 +23,21 @@ public class GUIInit {
             int a = decision.makeDecision(risk, fund, 0.01f);
             switch(a){
                 case 0:
-                    System.out.println("Znaleziono.");
+                    System.out.println("Znaleziono.\n");
                     break;
                 case 1:
-                    System.out.println("Niepoprawne dane. (ryzyko)");
+                    System.out.println("Niepoprawne dane. (ryzyko)\n");
                     break;
                 case 2:
-                    System.out.println("Znaleziono, po zwiekszeniu ryzyka");
+                    System.out.println("Znaleziono, po zwiekszeniu ryzyka\n");
                     break;
                 default:
             }
         }
+    }
+
+    public void addData(DecisionSupport decision1){
+        decision = decision1;
+        okno.addWDButtonListener(new swdListener());
     }
 }

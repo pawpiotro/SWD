@@ -31,7 +31,7 @@ public class DecisionSupport {
             if(c.getZysk() > zyskMax){
                 zyskMax = c.getZysk();
                 best = c;
-                System.out.println("znaleziony lepszy");
+                //System.out.println("znaleziony lepszy");
                 found = true;
             }
 

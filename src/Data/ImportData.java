@@ -86,8 +86,8 @@ public class ImportData {
                                 default:
                             }
                         }
-                        if(c%3 == 2)
-                            System.out.println("\n");
+                        //if(c%3 == 2)
+                            //System.out.println("\n");
                     }
                 }
             }
@@ -103,7 +103,7 @@ public class ImportData {
             if (fileEntry.isDirectory()) {
                 importFilesFromFolder(fileEntry);
             } else {
-                System.out.println(fileEntry.getName());
+                //System.out.println(fileEntry.getName());
                 importDataFromFile(fileEntry.getAbsolutePath());
             }
         }
